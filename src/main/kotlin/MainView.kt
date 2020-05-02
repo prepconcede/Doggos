@@ -9,27 +9,39 @@ class MainView : View("Doggos") {
     private var images = List(9) { Image(imageUrls[it]) }
     private val imageViews = List(9) { ImageView(images[it]) }
     override val root = borderpane {
+        addClass(Styles.myBorderPane)
         center {
             gridpane {
                 for (i in 0..2) {
                     row {
                         for (j in 0..2) {
-                            add(imageViews[helperList[i][j]].apply {
-                                fitWidth = 450.0
-                                fitHeight = 300.0
-                                onLeftClick {
-                                    openInternalWindow(OnClickImage(images[helperList[i][j]]))
-                                }
-                            })
+                            hbox {
+                                addClass(Styles.myBoxForImages)
+                                add(imageViews[helperList[i][j]].apply {
+                                    fitWidth = 450.0
+                                    fitHeight = 300.0
+                                    onLeftClick {
+                                        openInternalWindow(
+                                            FullPhotoFragment(
+                                                images[helperList[i][j]],
+                                                imageUrls[helperList[i][j]]
+                                            )
+                                        )
+                                    }
+                                })
+                            }
                         }
                     }
                 }
                 right {
-                    button("update Doggos") {
-                        addClass(Styles.myButton)
-                        action {
-                            runAsync {
-                                updateImages()
+                    hbox {
+                        addClass(Styles.myBox)
+                        button("update Doggos") {
+                            addClass(Styles.myButton)
+                            action {
+                                runAsync {
+                                    updateImages()
+                                }
                             }
                         }
                     }

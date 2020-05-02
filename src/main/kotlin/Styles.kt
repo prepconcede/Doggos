@@ -1,20 +1,32 @@
-import javafx.scene.paint.Color
-import tornadofx.Stylesheet
-import tornadofx.cssclass
-import tornadofx.px
+import javafx.geometry.Pos
+import tornadofx.*
 
 class Styles : Stylesheet() {
     companion object {
+        val myBoxForImages by cssclass()
+        val myBox by cssclass()
         val myButton by cssclass()
+        val myBorderPane by cssclass()
     }
 
     init {
+        myBoxForImages {
+            padding = box(10.px)
+        }
+        myBorderPane {
+            backgroundColor += c("29303E")
+        }
+        myBox {
+            alignment = Pos.CENTER
+            padding = box(10.px)
+        }
         myButton {
+            padding = box(10.px)
             prefWidth = 200.px
-            prefHeight = 80.px
-            backgroundColor += Color.DARKORCHID
+            prefHeight = 400.px
+            backgroundColor += c("FD913C")
             and(hover) {
-                backgroundColor += Color.GREEN
+                backgroundColor += c("F05524")
             }
         }
     }
