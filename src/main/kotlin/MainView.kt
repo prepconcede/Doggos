@@ -5,7 +5,7 @@ import tornadofx.*
 class MainView : View("Doggos") {
     private val controller: DogController by inject()
     private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
-    private var imageUrls = controller.getImageUrls(9)
+    private var imageUrls: List<String> = controller.getImageUrls(9)
     private val imageViews = List(9) { ImageView(Image(imageUrls[it])) }
     override val root = borderpane {
         addClass(Styles.myBorderPane)
@@ -44,6 +44,7 @@ class MainView : View("Doggos") {
                             }
                         }
                     }
+
                 }
             }
         }
