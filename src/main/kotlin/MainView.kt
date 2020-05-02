@@ -6,8 +6,7 @@ class MainView : View("Doggos") {
     private val controller: DogController by inject()
     private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
     private var imageUrls = controller.getImageUrls(9)
-    private var images = List(9) { Image(imageUrls[it]) }
-    private val imageViews = List(9) { ImageView(images[it]) }
+    private val imageViews = List(9) { ImageView(Image(imageUrls[it])) }
     override val root = borderpane {
         addClass(Styles.myBorderPane)
         center {
@@ -18,12 +17,12 @@ class MainView : View("Doggos") {
                             hbox {
                                 addClass(Styles.myBoxForImages)
                                 add(imageViews[helperList[i][j]].apply {
-                                    fitWidth = 450.0
-                                    fitHeight = 300.0
+                                    fitWidth = 400.0
+                                    fitHeight = 266.6
                                     onLeftClick {
                                         openInternalWindow(
                                             FullPhotoFragment(
-                                                images[helperList[i][j]],
+                                                Image(imageUrls[helperList[i][j]]),
                                                 imageUrls[helperList[i][j]]
                                             )
                                         )
@@ -52,9 +51,8 @@ class MainView : View("Doggos") {
 
     private fun updateImages() {
         imageUrls = controller.getImageUrls(9)
-        images = List(9) { Image(imageUrls[it]) }
         for (i in 0..8) {
-            imageViews[i].image = images[i]
+            imageViews[i].image = Image(imageUrls[i])
         }
     }
 }
