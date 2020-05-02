@@ -19,9 +19,8 @@ data class Response(
 class DogController : Controller() {
     fun saveImageToFile(image: Image) {
         val fileChooser = FileChooser()
-        val outputPath = fileChooser.showSaveDialog(null)
+        val outputPath = fileChooser.showSaveDialog(null) ?: return
         val outputFile = File("$outputPath.jpg")
-        if (outputFile.absolutePath == "null.jpg") return
         val bImage: BufferedImage = SwingFXUtils.fromFXImage(image, null)
         try {
             ImageIO.write(bImage, "jpg", outputFile)

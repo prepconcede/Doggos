@@ -21,9 +21,11 @@ class Styles : Stylesheet() {
             padding = box(10.px)
         }
         myButton {
-            padding = box(10.px)
-            prefWidth = 400.px
-            prefHeight = 200.px
+            text {
+                textFill = c("957DAD")
+            }
+            prefWidth = 200.px
+            prefHeight = 400.px
             backgroundColor += c("FD913C")
             and(hover) {
                 backgroundColor += c("F05524")

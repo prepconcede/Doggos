@@ -15,16 +15,22 @@ class FullPhotoFragment(img: Image, imageUrl: String) : Fragment() {
         right {
             vbox {
                 addClass(Styles.myBox)
-                button("Copy photo URL") {
-                    addClass(Styles.myButton)
-                    action {
-                        controller.copyToClipboard(imageUrl)
+                hbox {
+                    addClass(Styles.myBox)
+                    button("Copy photo URL") {
+                        addClass(Styles.myButton)
+                        action {
+                            controller.copyToClipboard(imageUrl)
+                        }
                     }
                 }
-                button("Save") {
-                    addClass(Styles.myButton)
-                    action {
-                        controller.saveImageToFile(img)
+                hbox {
+                    addClass(Styles.myBox)
+                    button("Save") {
+                        addClass(Styles.myButton)
+                        action {
+                            controller.saveImageToFile(img)
+                        }
                     }
                 }
             }
