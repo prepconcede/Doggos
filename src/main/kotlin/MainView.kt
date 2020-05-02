@@ -1,30 +1,44 @@
+import javafx.scene.image.Image
+import javafx.scene.image.ImageView
 import tornadofx.*
 
 class MainView : View("My View") {
     private val controller: DogController by inject()
-    private var images = controller.getData(9).asObservable()
-    private var nums = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
+    private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
+    private var imageUrls = controller.getImageUrls(9)
+    private var images = List(9) { Image(imageUrls[it]) }
+    private val imageViews = List(9) { ImageView(images[it]) }
     override val root = borderpane {
         center {
             gridpane {
                 for (i in 0..2) {
                     row {
                         for (j in 0..2) {
-                            imageview(images[nums[i][j]]) {
+                            add(imageViews[helperList[i][j]].apply {
                                 fitWidth = 300.0
                                 fitHeight = 200.0
+                            })
+                        }
+                    }
+                }
+                right {
+                    button("update Doggos") {
+                        action {
+                            runAsync {
+                                updateImages()
                             }
                         }
                     }
                 }
-                row {
-                    button("vibe check") {
-                        action {
-                            images = controller.getData(9).asObservable()
-                        }
-                    }
-                }
             }
+        }
+    }
+
+    private fun updateImages() {
+        imageUrls = controller.getImageUrls(9)
+        images = List(9) { Image(imageUrls[it]) }
+        for (i in 0..8) {
+            imageViews[i].image = images[i]
         }
     }
 }

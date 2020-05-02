@@ -8,7 +8,7 @@ data class Response(
 )
 
 class DogController : Controller() {
-    fun getData(num: Int): List<String> {
+    fun getImageUrls(num: Int): List<String> {
         val json = URL("https://dog.ceo/api/breeds/image/random/$num").readText()
         val parsedJson = Gson().fromJson(json, Response::class.java)
         return parsedJson?.message ?: emptyList()
