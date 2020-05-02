@@ -2,7 +2,7 @@ import javafx.scene.image.Image
 import javafx.scene.image.ImageView
 import tornadofx.*
 
-class MainView : View("My View") {
+class MainView : View("Doggos") {
     private val controller: DogController by inject()
     private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
     private var imageUrls = controller.getImageUrls(9)
@@ -15,14 +15,18 @@ class MainView : View("My View") {
                     row {
                         for (j in 0..2) {
                             add(imageViews[helperList[i][j]].apply {
-                                fitWidth = 300.0
-                                fitHeight = 200.0
+                                fitWidth = 450.0
+                                fitHeight = 300.0
+                                onLeftClick {
+                                    openInternalWindow(OnClickImage(images[helperList[i][j]]))
+                                }
                             })
                         }
                     }
                 }
                 right {
                     button("update Doggos") {
+                        addClass(Styles.myButton)
                         action {
                             runAsync {
                                 updateImages()
