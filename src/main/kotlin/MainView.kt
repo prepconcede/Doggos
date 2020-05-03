@@ -1,8 +1,10 @@
 import javafx.scene.image.Image
 import javafx.scene.image.ImageView
+import javafx.scene.shape.Circle
 import tornadofx.*
 
 class MainView : View("Doggos") {
+    private val refreshImageView = ImageView(Image(resources["refresh.png"]))
     private val controller: DogController by inject()
     private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
     private var imageUrls: List<String> = controller.getImageUrls(9)
@@ -33,14 +35,21 @@ class MainView : View("Doggos") {
                     }
                 }
                 right {
-                    hbox {
+                    vbox {
                         addClass(Styles.myBox)
-                        button("update Doggos") {
+                        button("", refreshImageView) {
+                            shape = Circle(1.0)
                             addClass(Styles.myButton)
                             action {
                                 runAsync {
                                     updateImages()
                                 }
+                            }
+                        }
+                        text("Update Doggos") {
+                            style {
+                                fontSize = 28.px
+                                fill = c("FD913C")
                             }
                         }
                     }

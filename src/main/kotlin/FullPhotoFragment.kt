@@ -1,7 +1,7 @@
 import javafx.scene.image.Image
 import tornadofx.*
 
-class FullPhotoFragment(img: Image, imageUrl: String) : Fragment() {
+class FullPhotoFragment(img: Image, imageUrl: String) : Fragment("What a beautiful doggo!") {
     private val controller: DogController by inject()
     override val root = borderpane {
         addClass(Styles.myBorderPane)

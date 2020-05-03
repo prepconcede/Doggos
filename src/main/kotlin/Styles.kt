@@ -22,10 +22,12 @@ class Styles : Stylesheet() {
         }
         myButton {
             text {
-                textFill = c("957DAD")
+                fitToWidth = true
+                fontSize = 20.px
+                fill = c("29303E")
             }
             prefWidth = 200.px
-            prefHeight = 400.px
+            prefHeight = 200.px
             backgroundColor += c("FD913C")
             and(hover) {
                 backgroundColor += c("F05524")
