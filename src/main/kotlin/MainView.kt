@@ -4,7 +4,7 @@ import javafx.scene.shape.Circle
 import tornadofx.*
 
 class MainView : View("Doggos") {
-    private val refreshImageView = ImageView(Image(javaClass.getResource("refresh.png").toURI().toString()))
+    private val refreshImageView = ImageView(Image(javaClass.getResource("/refresh.png").toURI().toString()))
     private val controller: DogController by inject()
     private val helperList = listOf(listOf(0, 1, 2), listOf(3, 4, 5), listOf(6, 7, 8))
     private var imageUrls: List<String> = controller.getImageUrls(9)

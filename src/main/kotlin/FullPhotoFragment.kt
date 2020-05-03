@@ -7,6 +7,7 @@ class FullPhotoFragment(img: Image, imageUrl: String) : Fragment("What a beautif
         addClass(Styles.myBorderPane)
         center {
             imageview(img) {
+                addClass(Styles.myBoxForImages)
                 isPreserveRatio = true
                 fitHeight = 800.0
                 fitWidth = 800.0
@@ -17,7 +18,7 @@ class FullPhotoFragment(img: Image, imageUrl: String) : Fragment("What a beautif
                 addClass(Styles.myBox)
                 hbox {
                     addClass(Styles.myBox)
-                    button("Copy photo URL") {
+                    button("Copy to clipboard") {
                         addClass(Styles.myButton)
                         action {
                             controller.copyToClipboard(imageUrl)
