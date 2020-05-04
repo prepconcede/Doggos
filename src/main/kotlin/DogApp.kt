@@ -1,5 +1,7 @@
+import javafx.scene.image.Image
 import javafx.stage.Stage
 import tornadofx.App
+import tornadofx.addStageIcon
 import tornadofx.importStylesheet
 
 class DogApp : App() {
@@ -11,5 +13,6 @@ class DogApp : App() {
 
     init {
         importStylesheet(Styles::class)
+        addStageIcon(Image(javaClass.getResourceAsStream("/icon.jpg")))
     }
 }
